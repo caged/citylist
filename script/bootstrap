@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+appdir=$(cd $(dirname "$0")/.. && pwd)
+[ -f /etc/app-env ] && exit 0
+
+cd "$appdir" && docker build -t citylist .

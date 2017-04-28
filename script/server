@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+appdir=$(cd $(dirname "$0")/.. && pwd)
+[ -f /etc/app-env ] || exec "$appdir/script/app-env" $0 $@
+
+exec gunicorn -b :3000 app:app

@@ -1,0 +1,12 @@
+#!/bin/sh
+# Run a command in the app's development environment.
+
+set -e
+
+appdir=$(cd $(dirname "$0")/.. && pwd)
+[ -f /etc/app-env ] && exec "$@"
+
+cmd="$@"; [ "$#" -eq 0 ] && cmd=bash
+image=${DOCKER_IMAGE:=citylist}
+
+exec docker run -i -p 3000:3000 -t -v "$appdir:/app" $image $cmd
