@@ -1,4 +1,6 @@
+from datetime import datetime
 from sqlalchemy import Column, Integer, String, UnicodeText, DateTime
+from sqlalchemy import event
 from app.db import Base
 
 
@@ -13,3 +15,14 @@ class Channel(Base):
     neighborhood = Column(UnicodeText)
     address = Column(UnicodeText)
     description = Column(UnicodeText)
+    case = Column(UnicodeText)
+
+    @classmethod
+    def generate_slug(cls, date, case):
+        return date.strftime('%s') + ''.join(case.split()).lower()
+
+
+@event.listens_for(Channel, 'before_insert')
+def set_slug(mapper, connect, self):
+    self.slug = self.posted_at.strftime('%s') + ''.join(self.case.split()).lower()
+    self.imported_at = datetime.now()
