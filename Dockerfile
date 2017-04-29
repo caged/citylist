@@ -9,7 +9,11 @@ RUN apt-get update && apt-get install -y \
     git \
     liblapack-dev \
     libopenblas-dev \
-    wget
+    wget \
+    sqlite3 \
+    libsqlite3-dev \
+    libspatialite-dev \
+    spatialite-bin
 
 WORKDIR /app
 
