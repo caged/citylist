@@ -1,12 +1,22 @@
-from flask import Flask
+import os
+from flask import Flask, render_template
+from .db import session
+from .models.channel import Channel
 
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route('/')
 def index():
-    return "SNAKE IS BAKE"
+    channels = session.query(Channel).\
+        order_by(Channel.posted_at.desc()). \
+        limit(500)
+
+    return render_template('index.html',
+                           title='Home',
+                           channels=channels)
 
 
 if __name__ == "__main__":
+    print(os.environ)
     app.run(host='0.0.0.0', debug=True, port=3000)

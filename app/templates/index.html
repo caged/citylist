@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+<div class="channels container">
+  <div class="row">
+    <div class="column">
+      <h2 class="title">Portland, OR Public Notices</h2>
+    </div>
+  </div>
+  {% for entry in channels %}
+  <div class="channel row">
+    <div class="column-25 column">
+      {{ entry.neighborhood }}
+    </div>
+    <div class="column-50 column">
+      {{ entry.address }}
+    </div>
+    <div class="column-25 column">
+      <span class="date">{{ entry.posted_at.strftime('%A %B %d, %Y') }}</span>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

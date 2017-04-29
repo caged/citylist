@@ -1,0 +1,13 @@
+body {
+  color: #333;
+  background: #f7f7f7;
+}
+
+.channels {
+  background: #fff;
+}
+
+.title {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
