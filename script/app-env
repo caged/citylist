@@ -9,4 +9,4 @@ appdir=$(cd $(dirname "$0")/.. && pwd)
 cmd="$@"; [ "$#" -eq 0 ] && cmd=bash
 image=${DOCKER_IMAGE:=citylist}
 
-exec docker run --env-file "$appdir/.env" -i -p 3000:3000 -t -v "$appdir:/app" $image $cmd
+exec docker run -e PYTHONPATH="/app:$PYTHONPATH" --env-file "$appdir/.env" -i -p 3000:3000 -t -v "$appdir:/app" $image $cmd
