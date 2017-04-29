@@ -7,12 +7,12 @@ class FeedImporter:
     def __init__(self, name, url):
         self.name = name
         self.url = url
+        self.process()
 
     def process(self):
-        feed = feedparser.parse(url)
+        feed = feedparser.parse(self.url)
         for entry in feed.entries:
-            load_entry(entry)
+            self.load_entry(entry)
 
     def load_entry(self, entry):
-        print(entry.description)
-        # pass
+        pass
