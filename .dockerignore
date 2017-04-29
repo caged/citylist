@@ -1,0 +1,7 @@
+.dockerignore
+.git
+.gitignore
+.python-version
+Dockerfile
+README.md
+citylist.db
