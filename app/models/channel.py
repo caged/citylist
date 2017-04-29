@@ -16,6 +16,7 @@ class Channel(Base):
     address = Column(UnicodeText)
     description = Column(UnicodeText)
     case = Column(UnicodeText)
+    raw_text = Column(UnicodeText)
 
     @classmethod
     def generate_slug(cls, date, case):
