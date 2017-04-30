@@ -3,3 +3,4 @@ gunicorn==19.7.1
 requests==2.11.1
 feedparser==5.2.1
 alembic==0.9.1
+geocoder==1.22.4

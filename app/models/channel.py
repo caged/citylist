@@ -1,22 +1,25 @@
 from datetime import datetime
-from sqlalchemy import Column, Integer, String, UnicodeText, DateTime
+import sqlalchemy as sa
 from sqlalchemy import event
 from app.db import Base
+import geocoder
 
 
 class Channel(Base):
     __tablename__ = 'channels'
 
-    id = Column(Integer, primary_key=True)
-    slug = Column(String)
-    name = Column(UnicodeText)
-    posted_at = Column(DateTime)
-    imported_at = Column(DateTime)
-    neighborhood = Column(UnicodeText)
-    address = Column(UnicodeText)
-    description = Column(UnicodeText)
-    case = Column(UnicodeText)
-    raw_text = Column(UnicodeText)
+    id = sa.Column(sa.Integer, primary_key=True)
+    slug = sa.Column(sa.Text)
+    name = sa.Column(sa.Text)
+    case = sa.Column(sa.Text)
+    posted_at = sa.Column(sa.DateTime)
+    imported_at = sa.Column(sa.DateTime)
+    neighborhood = sa.Column(sa.Text)
+    address = sa.Column(sa.Text)
+    lat = sa.Column(sa.REAL)
+    lon = sa.Column(sa.REAL)
+    description = sa.Column(sa.Text)
+    raw_text = sa.Column(sa.Text)
 
     @classmethod
     def generate_slug(cls, date, case):
@@ -27,3 +30,11 @@ class Channel(Base):
 def set_slug(mapper, connect, self):
     self.slug = self.posted_at.strftime('%s') + ''.join(self.case.split()).lower()
     self.imported_at = datetime.now()
+
+
+@event.listens_for(Channel.address, 'set')
+def set_lat_lon(target, value, oldvalue, initiator):
+    g = geocoder.google(value + " Portland, OR")
+    if g.ok:
+        target.lat = g.latlng[0]
+        target.lon = g.latlng[1]
