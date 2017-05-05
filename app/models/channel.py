@@ -26,6 +26,7 @@ class Channel(Base):
         self.proposal = extract_proposal()
         try:
             self.title, self.notice = self.description.split(' - ')
+            self.notice_class = self.notice.lower().replace(' ', '-')
         except:
             self.title = self.description
 
