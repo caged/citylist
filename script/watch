@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+appdir=$(cd $(dirname "$0")/.. && pwd)
+
+watchmedo shell-command \
+  --patterns="*.py;*.html;*.css;*.js" \
+  --recursive \
+  --command='echo "${appdir}" && kill -HUP `cat gunicorn.pid`' .
