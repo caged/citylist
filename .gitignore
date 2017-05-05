@@ -1,3 +1,4 @@
 __pycache__
 citylist.db
 node_modules
+gunicorn.pid
