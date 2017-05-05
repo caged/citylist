@@ -1,6 +1,6 @@
 from datetime import datetime
 import sqlalchemy as sa
-from sqlalchemy import event
+from sqlalchemy import event, orm
 from app.db import Base
 import geocoder
 
@@ -20,6 +20,17 @@ class Channel(Base):
     lon = sa.Column(sa.REAL)
     description = sa.Column(sa.Text)
     raw_text = sa.Column(sa.Text)
+
+    @orm.reconstructor
+    def init_on_load(self):
+        self.proposal = extract_proposal()
+        try:
+            self.title, self.notice = self.description.split(' - ')
+        except:
+            self.title = self.description
+
+    def extract_proposal(self):
+        pass
 
     @classmethod
     def generate_slug(cls, date, case):
