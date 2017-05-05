@@ -10,8 +10,16 @@
   {% for entry in channels %}
   <div class="channel">
     <header class="entry-head row">
-      <h2 class="column">{{entry.title}}</h2>
-      <div class="column-xauto">{{entry.notice}}</div>
+      <h2 class="column">
+        {{entry.title}}
+        <div class="neighborhood">{{ entry.neighborhood }}</div>
+      </h2>
+      <div class="column-xauto">
+        {% if entry.notice_class %}
+        <div class="{{entry.notice_class}} notice">{{entry.notice}}</div>
+        <div class="date">{{entry.posted_at.strftime('%m-%d-%Y')}}</div>
+        {% endif %}
+      </div>
     </header>
     <div class="row">
       <div class="column">

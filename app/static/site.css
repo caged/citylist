@@ -32,3 +32,38 @@ body {
   padding: 1rem;
   border-bottom: 1px solid #eee;
 }
+
+.neighborhood {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: #555;
+}
+
+.notice {
+  padding: 5px;
+  color: #fff;
+  background: hsl(37, 86%, 51%);
+  border-radius: 0.1rem;
+  text-align: center;
+}
+
+.revised-staff-report,
+.staff-report,
+.ho-staff-report {
+  background-color: hsl(277, 68%, 54%);
+}
+
+.hearing {
+  background-color: hsl(145, 60%, 45%);
+}
+
+.rfr {
+  background-color: hsl(208, 60%, 45%);
+}
+
+.date {
+  margin-top: 0.4rem;
+  text-align: center;
+  color: #555;
+}
