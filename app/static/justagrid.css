@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  font-size: 10px;
+}
+
+h1,h2,h3,h4,h5,h6,p,blockquote,ol,ul {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 112rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+}
+
+.column {
+  flex: 1 1 auto;
+}
+
+.column-x10 {
+  flex: 0 0 10%;
+}
+
+.column-x20 {
+  flex: 0 0 20%;
+}
+
+.column-x30 {
+  flex: 0 0 30%;
+}
+
+.column-x40 {
+  flex: 0 0 40%;
+}
+
+.column-x50 {
+  flex: 0 0 50%;
+}
+
+.xauto {
+  margin-left: auto;
+}
+
+@media (min-width: 40.0rem) {
+  .row {
+    flex-direction: row;
+  }
+}
