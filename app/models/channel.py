@@ -23,7 +23,7 @@ class Channel(Base):
 
     @orm.reconstructor
     def init_on_load(self):
-        self.proposal = extract_proposal()
+        self.proposal = self.extract_proposal()
         try:
             self.title, self.notice = self.description.split(' - ')
             self.notice_class = self.notice.lower().replace(' ', '-')
