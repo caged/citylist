@@ -67,3 +67,9 @@ body {
   text-align: center;
   color: #555;
 }
+
+.proposal {
+  padding: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+}

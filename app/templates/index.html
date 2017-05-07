@@ -11,7 +11,7 @@
   <div class="channel">
     <header class="entry-head row">
       <h2 class="column">
-        {{entry.title}}
+        <a href="">{{entry.title}}</a>
         <div class="neighborhood">{{ entry.neighborhood }}</div>
       </h2>
       <div class="column-xauto">
@@ -23,10 +23,9 @@
     </header>
     <div class="row">
       <div class="column">
-        {{ entry.neighborhood }}
-      </div>
-      <div class="column">
-        that
+        <div class="proposal">
+          {{ entry.proposal }}
+        </div>
       </div>
     </div>
   </div>
