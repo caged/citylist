@@ -12,6 +12,7 @@ class Channel(Base):
     slug = sa.Column(sa.Text)
     name = sa.Column(sa.Text)
     case = sa.Column(sa.Text)
+    link = sa.Column(sa.Text)
     posted_at = sa.Column(sa.DateTime)
     imported_at = sa.Column(sa.DateTime)
     neighborhood = sa.Column(sa.Text)
