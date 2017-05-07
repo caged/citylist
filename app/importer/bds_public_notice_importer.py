@@ -22,7 +22,7 @@ class BDSPublicNoticeImporter(FeedImporter):
                 tmp.write(response.content)
                 sp = subprocess.run(['pdftotext', '-enc', 'UTF-8', '-raw', tmp.name, '-'],
                                     stdout=subprocess.PIPE)
-                pdf_text = sp.stdout
+                pdf_text = sp.stdout.decode()
         except requests.exceptions.HTTPError as err:
             pdf_text = ""
 
@@ -44,6 +44,7 @@ class BDSPublicNoticeImporter(FeedImporter):
                 neighborhood=neighborhood,
                 address=address,
                 description=detail,
+                link=entry.link,
                 case=case,
                 raw_text=raw_text)
 

@@ -5,6 +5,14 @@ body {
                Helvetica, Arial, sans-serif;
 }
 
+a {
+  color: hsl(133, 52%, 40%);
+}
+
+a:hover {
+  color: hsl(133, 52%, 50%);
+}
+
 .container {
   margin: 0 1rem;
 }
