@@ -33,7 +33,7 @@ a:hover {
 .channel {
   margin-bottom: 1rem;
   background: #fff;
-  border-radius: 3px;
+  border-radius: 0.3rem;
 }
 
 .entry-head {
@@ -80,4 +80,20 @@ a:hover {
   padding: 1rem;
   font-size: 0.9rem;
   line-height: 1.4rem;
+}
+
+.map-image {
+  border-left: 1px solid #ccc;
+  background: #ddd;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.map-image img {
+}
+
+.location-info {
+  display: block;
+  padding: 5px;
+  text-align: center;
+  color: #999;
 }

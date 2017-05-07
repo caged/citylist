@@ -27,6 +27,10 @@
           {{ entry.excerpt }}
         </div>
       </div>
+      <div class="map-image column">
+        <img src="{{ entry.cached_map_image(width=200,height=200,zoom=13,pitch=40,bearing=45)}}">
+        <span class="location-info">{{entry.address}}</span>
+      </div>
     </div>
   </div>
   {% endfor %}
