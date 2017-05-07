@@ -1,8 +1,10 @@
 from datetime import datetime
+import re
 import sqlalchemy as sa
 from sqlalchemy import event, orm
 from app.db import Base
 import geocoder
+import textwrap
 
 
 class Channel(Base):
@@ -25,6 +27,7 @@ class Channel(Base):
     @orm.reconstructor
     def init_on_load(self):
         self.proposal = self.extract_proposal()
+        self.excerpt = self.extract_proposal_excerpt()
         try:
             self.title, self.notice = self.description.split(' - ')
             self.notice_class = self.notice.lower().replace(' ', '-')
@@ -32,7 +35,14 @@ class Channel(Base):
             self.title = self.description
 
     def extract_proposal(self):
-        pass
+        val = re.sub('\\n', '', self.raw_text)
+        try:
+            return re.split('proposal:', val, flags=re.IGNORECASE)[1]
+        except Exception as e:
+            ""
+
+    def extract_proposal_excerpt(self):
+        return textwrap.shorten(self.proposal, width=350)
 
     @classmethod
     def generate_slug(cls, date, case):
