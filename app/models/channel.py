@@ -109,7 +109,10 @@ def set_slug(mapper, connect, self):
 
 @event.listens_for(Channel.address, 'set')
 def set_lat_lon(target, value, oldvalue, initiator):
-    g = geocoder.google(value + " Portland, OR")
-    if g.ok:
-        target.lat = g.latlng[0]
-        target.lon = g.latlng[1]
+    try:
+        g = geocoder.google(value + " Portland, OR")
+        if g.ok:
+            target.lat = g.latlng[0]
+            target.lon = g.latlng[1]
+    except:
+        pass
