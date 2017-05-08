@@ -10,7 +10,7 @@ app = Flask(__name__)
 def index():
     channels = session.query(Channel).\
         order_by(Channel.posted_at.desc()). \
-        limit(30)
+        limit(50)
 
     return render_template('index.html',
                            title='Home',
