@@ -63,7 +63,7 @@ class Channel(Base):
 
         try:
             geojson = self.geojson_point()
-            url = "https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/geojson(%s)/%s,%s,%s,%s,%s/%sx%s?access_token=%s" % (
+            url = "https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/geojson(%s)/%s,%s,%s,%s,%s/%sx%s@2x?access_token=%s" % (
                 pathname2url(geojson),
                 self.lon,
                 self.lat,
