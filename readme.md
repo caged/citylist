@@ -1,7 +1,7 @@
 **Sync data**
 
 ```shell
-./script/app-env python app/config/daily.py
+./script/run python app/config/daily.py
 ```
 
 **Hacky local dev w/ live reload**
