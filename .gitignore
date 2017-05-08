@@ -2,4 +2,4 @@ __pycache__
 citylist.db
 node_modules
 gunicorn.pid
-app/static/tiles
+app/static/tiles/*.png

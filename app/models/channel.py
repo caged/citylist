@@ -55,7 +55,7 @@ class Channel(Base):
             return ""
 
     def cached_map_image(self, width=300, height=300, zoom=14, pitch=0, bearing=0,
-                         default='/static/tiles/na.png'):
+                         default='/static/na.png'):
 
         name = '%s-%s-%s-%s-%s-%s.png' % (self.id, width, height, zoom, pitch, bearing)
         file_name = '/static/tiles/%s' % name
