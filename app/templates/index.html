@@ -12,12 +12,12 @@
     <header class="entry-head row">
       <h2 class="column">
         <a href="{{entry.link}}">{{entry.title}}</a>
-        <div class="neighborhood">{{ entry.neighborhood }}</div>
+        <div class="neighborhood">{{ entry.neighborhood }} - {{entry.name}}</div>
       </h2>
       <div class="column-xauto">
         {% if entry.notice_class %}
         <div class="{{entry.notice_class}} notice">{{entry.notice}}</div>
-        <div class="date">{{entry.posted_at.strftime('%m-%d-%Y')}}</div>
+        <div class="date">{{entry.posted_at.strftime('%B %d %Y')}}</div>
         {% endif %}
       </div>
     </header>
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="map-image column">
-        <img src="{{ entry.cached_map_image(width=200,height=200,zoom=13,pitch=40,bearing=45)}}">
+        <img width="200" height="200" src="{{ entry.cached_map_image(width=200,height=200,zoom=13,pitch=40,bearing=45)}}">
         <span class="location-info">{{entry.address}}</span>
       </div>
     </div>
