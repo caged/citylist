@@ -12,7 +12,10 @@ class FeedImporter:
     def process(self):
         feed = feedparser.parse(self.url)
         for entry in feed.entries:
-            self.load_entry(entry)
+            try:
+                self.load_entry(entry)
+            except:
+                print("Unable to load %s at %s" % (entry.title, self.url))
 
     def load_entry(self, entry):
         pass
