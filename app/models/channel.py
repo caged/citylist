@@ -49,7 +49,10 @@ class Channel(Base):
             ""
 
     def extract_proposal_excerpt(self):
-        return textwrap.shorten(self.proposal, width=350)
+        if self.proposal:
+            return textwrap.shorten(self.proposal, width=350)
+        else:
+            return ""
 
     def cached_map_image(self, width=300, height=300, zoom=14, pitch=0, bearing=0,
                          default='/static/tiles/na.png'):
